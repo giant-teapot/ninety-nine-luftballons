@@ -1,0 +1,19 @@
+name:                ninety-nine-luftballons
+version:             0.1.0.0
+synopsis: H-99 problems solutions
+description: Trying to learn Haskell by doing the "Ninety-Nine Haskell Problems" (https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems)
+homepage:            https://github.com/giant-teapot/ninety-nine-luftballons#readme
+license:             PublicDomain
+license-file:        LICENSE
+author:              Pierre Sudron
+maintainer:          pierre@giant-teapot.org
+copyright:           2018 Pierre Sudron
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+executable ninety-nine-luftballons
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
