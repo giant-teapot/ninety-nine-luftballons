@@ -66,9 +66,9 @@ flatten (List xs) = concatMap (flatten) xs
 -- Problem #8
 -- Eliminate consecutive duplicates of list elements.
 
-compress :: [a] -> [a]
-compress = error "not implemented yet ;)"
-
+compress :: (Eq a) => [a] -> [a]
+compress [] = []
+compress (x:xs) = x : dropWhile (==x) (compress xs)
 
 main :: IO ()
 main = do
