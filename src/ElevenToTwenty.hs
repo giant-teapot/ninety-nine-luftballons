@@ -14,3 +14,14 @@ data EncodedElement a
 
 encodeModified :: (Eq a) => [a] -> [EncodedElement a]
 encodeModified = map (\(n, x) -> if (n == 1) then Single x else Multiple n x) . encode
+
+-- Problem #12
+-- Given a run-length code list generated as specified in problem 11.
+-- Construct its uncompressed version.
+
+decodeElem :: EncodedElement a -> [a]
+decodeElem (Single x) = [x]
+decodeElem (Multiple n x) = replicate n x
+
+decodeModified :: [EncodedElement a] -> [a]
+decodeModified = concatMap decodeElem
