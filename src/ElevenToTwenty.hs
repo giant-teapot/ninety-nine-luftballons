@@ -88,3 +88,10 @@ rotate :: [a] -> Int -> [a]
 rotate xs n = (drop s xs) ++ (take s xs)
     where
         s = mod n $ length xs
+
+-- Problem #20
+-- Remove the K'th element from a list.
+-- Index starts at 1.
+
+removeAt :: [a] -> Int -> (a, [a])
+removeAt xs n = (xs!!(n-1), (take (n-1) xs) ++ (drop n xs))
