@@ -80,3 +80,11 @@ slice xs i j = take end $ drop start xs
     where
         start = max 0 (i-1)
         end = j - start
+
+-- Problem #19
+-- Rotate a list N places to the left.
+
+rotate :: [a] -> Int -> [a]
+rotate xs n = (drop s xs) ++ (take s xs)
+    where
+        s = mod n $ length xs
