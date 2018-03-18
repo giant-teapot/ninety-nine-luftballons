@@ -1,6 +1,6 @@
-module ElevenToTwenty where
+module H99.ElevenToTwenty where
 
-import OneToTen (encode)
+import H99.OneToTen (encode)
 
 -- Problem #11
 -- Modify the result of problem 10 in such a way that if an element has no

@@ -4,8 +4,8 @@ import Test.HUnit
 import Test.Framework (defaultMain)
 import Test.Framework.Providers.HUnit (hUnitTestToTests)
 
-import OneToTen
-import ElevenToTwenty
+import H99.OneToTen
+import H99.ElevenToTwenty
 
 -- Problems 1 to 10
 
