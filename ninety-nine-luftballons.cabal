@@ -13,9 +13,20 @@ cabal-version:       >=1.10
 extra-source-files:  README.md
 
 library
-  exposed-modules:
-    OneToTen, ElevenToTwenty
+  exposed-modules:     OneToTen,
+                       ElevenToTwenty
   other-modules:
   hs-source-dirs:      src
   default-language:    Haskell2010
   build-depends:       base >= 4.7 && < 5
+
+Test-Suite test-solutions
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             TestSolutions.hs
+  build-depends:       base >= 4.7 && < 5,
+                       test-framework,
+                       test-framework-hunit,
+                       HUnit,
+                       ninety-nine-luftballons
+  default-language:    Haskell2010
