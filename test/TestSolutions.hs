@@ -93,6 +93,12 @@ testProblem19 = TestCase $ do
 testProblem20 = TestCase $ do
     assertEqual "removeAt \"abcd\" 2" ('b',"acd") $ removeAt "abcd" 2
 
+testProblem21 = TestCase $ do
+    assertEqual "insertAt 'X' \"abcd\" 2" "aXbcd" $ insertAt 'X' "abcd" 2
+
+testProblem22 = TestCase $ do
+    assertEqual "range 4 9" [4,5,6,7,8,9] $ range 4 9
+
 -- Global test list
 
 testCases = TestList
@@ -117,6 +123,9 @@ testCases = TestList
     , TestLabel "Problem #18 (slice)" testProblem18
     , TestLabel "Problem #19 (rotate)" testProblem19
     , TestLabel "Problem #20 (removeAt)" testProblem20
+
+    , TestLabel "Problem #21 (insertAt)" testProblem21
+    , TestLabel "Problem #22 (range)" testProblem22
     ]
 
 main :: IO ()
