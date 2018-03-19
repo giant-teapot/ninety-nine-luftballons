@@ -104,6 +104,14 @@ testProblem23 = TestCase $ do
     assertEqual "length $ rnd_select [1..15] 3" 3 $ length xs
     assertEqual "all (flip elem [1..15]) $ rnd_select [1..15] 3" True $ all (flip elem [1..15]) xs
 
+testProblem24 = TestCase $ do
+    xs <- diff_select 6 49
+    assertEqual "length $ diff_select 6 49" 6 $ length xs
+    assertEqual "all (flip elem [1..49]) $ diff_select 6 49" True $ all (flip elem [1..49]) xs
+    xs' <- diff_select 5 1
+    assertEqual "all (==1) $ diff_select 5 1" True $ all (==1) xs'
+
+
 -- Global test list
 
 testCases = TestList
@@ -132,6 +140,7 @@ testCases = TestList
     , TestLabel "Problem #21 (insertAt)" testProblem21
     , TestLabel "Problem #22 (range)" testProblem22
     , TestLabel "Problem #23 (rnd_select)" testProblem23
+    , TestLabel "Problem #24 (diff_select)" testProblem24
     ]
 
 main :: IO ()

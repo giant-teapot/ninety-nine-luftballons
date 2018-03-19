@@ -208,3 +208,11 @@ rnd_select :: [a] -> Int -> IO [a]
 rnd_select xs n = do
     prng <- getStdGen
     return $ take n $ [ xs !! i | i <- randomRs (0, length xs - 1) prng ]
+
+-- Problem #24
+-- Lotto: Draw N different random numbers from the set 1..M.
+
+diff_select :: Int -> Int -> IO [Int]
+diff_select n limit = do
+    prng <- getStdGen
+    return $ take n $ [ x | x <- randomRs (1, limit) prng ]
