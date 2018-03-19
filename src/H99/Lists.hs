@@ -1,6 +1,8 @@
 module H99.Lists where
 -- This modules contains problems #1 to #28 on lists
 
+import System.Random (getStdGen, randomRs)
+
 -- Problem #1:
 -- Find the last element of a list.
 
@@ -198,3 +200,11 @@ insertAt x xs n = take (n-1) xs ++ x:drop (n-1) xs
 
 range :: Int -> Int -> [Int]
 range x y = [x..y]
+
+-- Problem #23
+-- Extract a given number of randomly selected elements from a list.
+
+rnd_select :: [a] -> Int -> IO [a]
+rnd_select xs n = do
+    prng <- getStdGen
+    return $ take n $ [ xs !! i | i <- randomRs (0, length xs - 1) prng ]

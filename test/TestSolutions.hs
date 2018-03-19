@@ -99,6 +99,11 @@ testProblem21 = TestCase $ do
 testProblem22 = TestCase $ do
     assertEqual "range 4 9" [4,5,6,7,8,9] $ range 4 9
 
+testProblem23 = TestCase $ do
+    xs <- rnd_select [1..15] 3
+    assertEqual "length $ rnd_select [1..15] 3" 3 $ length xs
+    assertEqual "all (flip elem [1..15]) $ rnd_select [1..15] 3" True $ all (flip elem [1..15]) xs
+
 -- Global test list
 
 testCases = TestList
@@ -126,6 +131,7 @@ testCases = TestList
 
     , TestLabel "Problem #21 (insertAt)" testProblem21
     , TestLabel "Problem #22 (range)" testProblem22
+    , TestLabel "Problem #23 (rnd_select)" testProblem23
     ]
 
 main :: IO ()
