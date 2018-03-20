@@ -120,6 +120,11 @@ testProblem24 = TestCase $ do
     xs' <- diff_select 5 1
     assertEqual "all (==1) $ diff_select 5 1" True $ all (==1) xs'
 
+testProblem25 = TestCase $ do
+    xs <- rnd_permu "abcdef"
+    assertEqual "length $ rnd_permu \"abcdef\"" 6 $ length xs
+    assertEqual "length . nub $ rnd_permu \"abcdef\"" 6 $ length $ nub xs
+    assertEqual "all (flip elem \"abcdef\") $ rnd_permu \"abcdef\"" True $ all (flip elem "abcdef") xs
 
 -- Global test list
 
@@ -150,6 +155,7 @@ testCases = TestList
     , TestLabel "Problem #22 (range)" testProblem22
     , TestLabel "Problem #23 (rnd_select)" testProblem23
     , TestLabel "Problem #24 (diff_select)" testProblem24
+    , TestLabel "Problem #25 (rnd_permu)" testProblem25
     ]
 
 main :: IO ()

@@ -227,3 +227,11 @@ diff_select :: Int -> Int -> IO [Int]
 diff_select n limit = do
     prng <- getStdGen
     return $ take n $ [ x | x <- randomRs (1, limit) prng ]
+
+-- Problem #25
+-- Generate a random permutation of the elements of a list.
+
+rnd_permu :: [a] -> IO [a]
+rnd_permu xs = rnd_select xs l
+    where
+        l = length xs
