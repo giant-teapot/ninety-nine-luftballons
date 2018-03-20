@@ -1,6 +1,7 @@
 module H99.Lists where
 -- This modules contains problems #1 to #28 on lists
 
+import Data.List (nub)
 import System.Random (getStdGen, randomRs)
 
 -- Problem #1:
@@ -203,9 +204,19 @@ range x y = [x..y]
 
 -- Problem #23
 -- Extract a given number of randomly selected elements from a list.
+-- An element from the list can only appear once.
 
 rnd_select :: [a] -> Int -> IO [a]
-rnd_select xs n = do
+rnd_select xs n
+    | n > length xs = error "cannot select more than the number of elements in the list"
+    | otherwise = map (xs!!) <$> indices
+    where
+        indices = take n . nub . randomRs (0, length xs - 1) <$> getStdGen
+
+-- Alternate solution: elements can appear twice.
+
+rnd_select' :: [a] -> Int -> IO [a]
+rnd_select' xs n = do
     prng <- getStdGen
     return $ take n $ [ xs !! i | i <- randomRs (0, length xs - 1) prng ]
 

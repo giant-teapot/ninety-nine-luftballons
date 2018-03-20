@@ -4,6 +4,7 @@ import Test.HUnit
 import Test.Framework (defaultMain)
 import Test.Framework.Providers.HUnit (hUnitTestToTests)
 
+import Data.List (nub)
 import H99.Lists
 
 testProblem1 = TestCase $ do
@@ -102,7 +103,15 @@ testProblem22 = TestCase $ do
 testProblem23 = TestCase $ do
     xs <- rnd_select [1..15] 3
     assertEqual "length $ rnd_select [1..15] 3" 3 $ length xs
+    assertEqual "length . nub $ rnd_select [1..15] 3" 3 $ length $ nub xs
     assertEqual "all (flip elem [1..15]) $ rnd_select [1..15] 3" True $ all (flip elem [1..15]) xs
+    -- Check that extracted elements are unique
+    xs <- rnd_select [1..15] 15
+    assertEqual "length . nub $ rnd_select [1..15] 15" 15 $ length $ nub xs
+
+    xs'' <- rnd_select' [1..15] 3
+    assertEqual "length $ rnd_select [1..15] 3" 3 $ length xs''
+    assertEqual "all (flip elem [1..15]) $ rnd_select [1..15] 3" True $ all (flip elem [1..15]) xs''
 
 testProblem24 = TestCase $ do
     xs <- diff_select 6 49
