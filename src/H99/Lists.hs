@@ -1,7 +1,7 @@
 module H99.Lists where
 -- This modules contains problems #1 to #28 on lists
 
-import Data.List (nub)
+import Data.List (nub, subsequences)
 import System.Random (getStdGen, randomRs)
 
 -- Problem #1:
@@ -235,3 +235,10 @@ rnd_permu :: [a] -> IO [a]
 rnd_permu xs = rnd_select xs l
     where
         l = length xs
+
+-- Problem #26
+-- Generate the combinations of K distinct objects chosen from the N elements of
+-- a list.
+
+combinations :: Int -> [a] -> [[a]]
+combinations n = filter ((==n).length) . subsequences

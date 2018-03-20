@@ -4,7 +4,7 @@ import Test.HUnit
 import Test.Framework (defaultMain)
 import Test.Framework.Providers.HUnit (hUnitTestToTests)
 
-import Data.List (nub)
+import Data.List (nub, subsequences)
 import H99.Lists
 
 testProblem1 = TestCase $ do
@@ -126,6 +126,11 @@ testProblem25 = TestCase $ do
     assertEqual "length . nub $ rnd_permu \"abcdef\"" 6 $ length $ nub xs
     assertEqual "all (flip elem \"abcdef\") $ rnd_permu \"abcdef\"" True $ all (flip elem "abcdef") xs
 
+testProblem26 = TestCase $ do
+    assertEqual "length $ combinations 3 \"abcdef\"" 20 $ length $ combinations 3 "abcdef"
+    assertEqual "all (flip elem $ subsequences \"abcdef\") $ combinations 3 \"abcdef\"" True $ all (flip elem $ subsequences "abcdef") $ combinations 3 "abcdef"
+    assertEqual "all ((==3) . length) $ combinations 3 \"abcdef\"" True $ all ((==3) . length) $ combinations 3 "abcdef"
+
 -- Global test list
 
 testCases = TestList
@@ -156,6 +161,7 @@ testCases = TestList
     , TestLabel "Problem #23 (rnd_select)" testProblem23
     , TestLabel "Problem #24 (diff_select)" testProblem24
     , TestLabel "Problem #25 (rnd_permu)" testProblem25
+    , TestLabel "Problem #26 (combinations)" testProblem26
     ]
 
 main :: IO ()
