@@ -6,6 +6,9 @@ import Test.Framework.Providers.HUnit (hUnitTestToTests)
 
 import Data.List (nub, subsequences)
 import H99.Lists
+import H99.Arithmetic
+
+-- H99.Lists
 
 testProblem1 = TestCase $ do
     assertEqual "myLast [1,2,3,4]" 4 $ myLast [1,2,3,4]
@@ -148,6 +151,13 @@ testProblem28 = TestCase $ do
         lsorted  = ["o","de","de","mn","abc","fgh","ijkl"]
         lfsorted = ["ijkl","o","abc","fgh","de","de","mn"]
 
+-- H99.Arithmetic
+
+testProblem31 = TestCase $ do
+    assertEqual "filter isPrime [1..100]"
+        [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67
+        , 71, 73, 79, 83, 89, 97] $ filter isPrime [1..100]
+
 -- Global test list
 
 testCases = TestList
@@ -181,6 +191,8 @@ testCases = TestList
     , TestLabel "Problem #26 (combinations)" testProblem26
     , TestLabel "Problem #27 (group)" testProblem27
     , TestLabel "Problem #28 (lsort, lfsort)" testProblem28
+    
+    , TestLabel "Problem #31 (isPrime)" testProblem31
     ]
 
 main :: IO ()

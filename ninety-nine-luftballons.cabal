@@ -13,7 +13,8 @@ cabal-version:       >=1.10
 extra-source-files:  README.md
 
 library
-  exposed-modules:     H99.Lists
+  exposed-modules:     H99.Lists,
+                       H99.Arithmetic
   other-modules:
   hs-source-dirs:      src
   default-language:    Haskell2010
