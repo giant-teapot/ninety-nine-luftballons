@@ -158,6 +158,11 @@ testProblem31 = TestCase $ do
         [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67
         , 71, 73, 79, 83, 89, 97] $ filter isPrime [1..100]
 
+testProblem32 = TestCase $ do
+    assertEqual "gcd 36 63" 9 $ myGcd 36 63
+    assertEqual "gcd -3 -6" 3 $ myGcd (-3) (-6)
+    assertEqual "gcd -3 6" 3 $ myGcd (-3) 6
+
 -- Global test list
 
 testCases = TestList
@@ -193,6 +198,7 @@ testCases = TestList
     , TestLabel "Problem #28 (lsort, lfsort)" testProblem28
     
     , TestLabel "Problem #31 (isPrime)" testProblem31
+    , TestLabel "Problem #32 (gcd)" testProblem32
     ]
 
 main :: IO ()
