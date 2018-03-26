@@ -4,10 +4,7 @@ import Test.HUnit
 import Test.Framework (defaultMain)
 import Test.Framework.Providers.HUnit (hUnitTestToTests)
 
-import H99.OneToTen
-import H99.ElevenToTwenty
-
--- Problems 1 to 10
+import H99.Lists
 
 testProblem1 = TestCase $ do
     assertEqual "myLast [1,2,3,4]" 4 $ myLast [1,2,3,4]
@@ -55,8 +52,6 @@ testProblem10 = TestCase $ do
     assertEqual "encode \"aaaabccaadeeee\""
                 [(4,'a'),(1,'b'),(2,'c'),(2,'a'),(1,'d'),(4,'e')]
                 $ encode "aaaabccaadeeee"
-
--- Problems 1 to 10
 
 testProblem11 = TestCase $ do
     assertEqual "encodeModified \"aaaabccaadeeee\"" 
