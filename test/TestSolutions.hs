@@ -163,6 +163,13 @@ testProblem32 = TestCase $ do
     assertEqual "gcd -3 -6" 3 $ myGcd (-3) (-6)
     assertEqual "gcd -3 6" 3 $ myGcd (-3) 6
 
+testProblem33 = TestCase $ do
+    assertEqual "coprime 35 64" True $ coprime 35 64
+
+testProblem34 = TestCase $ do
+    assertEqual "totient 10" 4 $ totient 10
+    assertEqual "totient <$> [40..42]" [16, 40, 12] $ totient <$> [40..42]
+
 -- Global test list
 
 testCases = TestList
@@ -198,7 +205,9 @@ testCases = TestList
     , TestLabel "Problem #28 (lsort, lfsort)" testProblem28
     
     , TestLabel "Problem #31 (isPrime)" testProblem31
-    , TestLabel "Problem #32 (gcd)" testProblem32
+    , TestLabel "Problem #32 (myGcd)" testProblem32
+    , TestLabel "Problem #33 (comprime)" testProblem33
+    , TestLabel "Problem #34 (totient)" testProblem34
     ]
 
 main :: IO ()
