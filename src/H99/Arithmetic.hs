@@ -35,3 +35,16 @@ coprime a b = (==1) $ myGcd a b
 totient :: (Integral a) => a -> Int
 totient 1 = 1
 totient n = length $ filter (coprime n) [1..(n-1)]
+
+-- Problem #35
+-- Determine the prime factors of a given positive integer.
+-- Construct a flat list containing the prime factors in ascending order.
+
+primeFactors :: (Integral a) => a -> [a]
+primeFactors 0 = []
+primeFactors n = _primeFactors n 2
+    where
+        _primeFactors 1 _ = []
+        _primeFactors n p
+            | (n `mod` p == 0) = p : _primeFactors (n `div` p) p
+            | otherwise        = _primeFactors n (p+1)

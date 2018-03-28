@@ -170,6 +170,12 @@ testProblem34 = TestCase $ do
     assertEqual "totient 10" 4 $ totient 10
     assertEqual "totient <$> [40..42]" [16, 40, 12] $ totient <$> [40..42]
 
+testProblem35 = TestCase $ do
+    assertEqual "primeFactors 0" [] $ primeFactors 0
+    assertEqual "primeFactors 1" [] $ primeFactors 1
+    assertEqual "primeFactors 3" [3] $ primeFactors 3
+    assertEqual "primeFactors 315" [3,3,5,7] $ primeFactors 315
+
 -- Global test list
 
 testCases = TestList
@@ -208,6 +214,7 @@ testCases = TestList
     , TestLabel "Problem #32 (myGcd)" testProblem32
     , TestLabel "Problem #33 (comprime)" testProblem33
     , TestLabel "Problem #34 (totient)" testProblem34
+    , TestLabel "Problem #35 (primeFactors)" testProblem35
     ]
 
 main :: IO ()
