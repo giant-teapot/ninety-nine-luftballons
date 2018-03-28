@@ -176,6 +176,11 @@ testProblem35 = TestCase $ do
     assertEqual "primeFactors 3" [3] $ primeFactors 3
     assertEqual "primeFactors 315" [3,3,5,7] $ primeFactors 315
 
+testProblem36 = TestCase $ do
+    assertEqual "primeFactorsMult 0" [] $ primeFactorsMult 0
+    assertEqual "primeFactorsMult 1" [] $ primeFactorsMult 1
+    assertEqual "primeFactorsMult 315" [(3,2),(5,1),(7,1)] $ primeFactorsMult 315
+
 -- Global test list
 
 testCases = TestList
@@ -215,6 +220,7 @@ testCases = TestList
     , TestLabel "Problem #33 (comprime)" testProblem33
     , TestLabel "Problem #34 (totient)" testProblem34
     , TestLabel "Problem #35 (primeFactors)" testProblem35
+    , TestLabel "Problem #36 (primeFactorsMult)" testProblem36
     ]
 
 main :: IO ()

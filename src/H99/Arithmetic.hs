@@ -1,5 +1,8 @@
 module H99.Arithmetic where
 
+import Data.Tuple (swap)
+import H99.Lists (encode)
+
 -- Problem #31
 -- Determine whether a given integer number is prime.
 
@@ -48,3 +51,10 @@ primeFactors n = _primeFactors n 2
         _primeFactors n p
             | (n `mod` p == 0) = p : _primeFactors (n `div` p) p
             | otherwise        = _primeFactors n (p+1)
+
+-- Problem #36
+-- Determine the prime factors of a given positive integer.
+-- Construct a list containing the prime factors and their multiplicity.
+
+primeFactorsMult :: (Integral a) => a -> [(a, Int)]
+primeFactorsMult n = map swap $ encode . primeFactors $ n
