@@ -58,3 +58,15 @@ primeFactors n = _primeFactors n 2
 
 primeFactorsMult :: (Integral a) => a -> [(a, Int)]
 primeFactorsMult n = map swap $ encode . primeFactors $ n
+
+-- Problem #37
+-- Calculate Euler's totient function phi(m) (improved).
+--
+-- Given, for an integral number N:
+--      primeFactorsMult N = [(p1, m1), (p2, m2)... (pk, mk)]
+-- then:
+--      phi(N) = Product((pi - 1) * pi ^ (mi - 1)), i in [1..k]
+
+totient' :: (Integral a) => a -> a
+totient' 0 = 0
+totient' n = foldl (*) 1 $ map (\(p, m) -> (p-1) * p^(m-1)) $ primeFactorsMult n

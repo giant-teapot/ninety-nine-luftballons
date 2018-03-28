@@ -167,6 +167,8 @@ testProblem33 = TestCase $ do
     assertEqual "coprime 35 64" True $ coprime 35 64
 
 testProblem34 = TestCase $ do
+    assertEqual "totient 0" 0 $ totient 0
+    assertEqual "totient 1" 1 $ totient 1
     assertEqual "totient 10" 4 $ totient 10
     assertEqual "totient <$> [40..42]" [16, 40, 12] $ totient <$> [40..42]
 
@@ -180,6 +182,13 @@ testProblem36 = TestCase $ do
     assertEqual "primeFactorsMult 0" [] $ primeFactorsMult 0
     assertEqual "primeFactorsMult 1" [] $ primeFactorsMult 1
     assertEqual "primeFactorsMult 315" [(3,2),(5,1),(7,1)] $ primeFactorsMult 315
+
+testProblem37 = TestCase $ do
+    assertEqual "totient' 0" 0 $ totient' 0
+    assertEqual "totient' 1" 1 $ totient' 1
+    assertEqual "totient' 10" 4 $ totient' 10
+    assertEqual "totient' <$> [40..42]" [16, 40, 12] $ totient' <$> [40..42]
+    assertEqual "totient' <$> [0..100]" (totient <$> [0..100]) $ (totient' <$> [0..100])
 
 -- Global test list
 
@@ -221,6 +230,7 @@ testCases = TestList
     , TestLabel "Problem #34 (totient)" testProblem34
     , TestLabel "Problem #35 (primeFactors)" testProblem35
     , TestLabel "Problem #36 (primeFactorsMult)" testProblem36
+    , TestLabel "Problem #37 (totient')" testProblem37
     ]
 
 main :: IO ()
