@@ -1,7 +1,7 @@
 module H99.Lists where
 -- This modules contains problems #1 to #28 on lists
 
-import Data.List (nub, subsequences)
+import Data.List (groupBy, nub, sortOn, subsequences)
 import System.Random (getStdGen, randomRs)
 
 -- Problem #1:
@@ -242,3 +242,19 @@ rnd_permu xs = rnd_select xs l
 
 combinations :: Int -> [a] -> [[a]]
 combinations n = filter ((==n).length) . subsequences
+
+-- Problem #28
+-- Sorting a list of lists according to length of sublists.
+
+-- a) Sort the elements of a list according to their length. Short lists first,
+-- longer lists later.
+
+lsort :: [[a]] -> [[a]]
+lsort = sortOn length
+
+-- b) Sort the elements of a list according to their length frequency. Lists
+-- with rare lengths are placed first, others with a more frequent length come
+-- later.
+
+lfsort :: [[a]] -> [[a]]
+lfsort = concat . lsort . groupBy (\x y -> length x == length y) . lsort
