@@ -131,6 +131,12 @@ testProblem26 = TestCase $ do
     assertEqual "all (flip elem $ subsequences \"abcdef\") $ combinations 3 \"abcdef\"" True $ all (flip elem $ subsequences "abcdef") $ combinations 3 "abcdef"
     assertEqual "all ((==3) . length) $ combinations 3 \"abcdef\"" True $ all ((==3) . length) $ combinations 3 "abcdef"
 
+testProblem27 = TestCase $ do
+    assertEqual "length $ group [2,3,4] input" 1260 $ length $ group [2,3,4] input
+    assertEqual "length $ group [2,2,5] input" 756 $ length $ group [2,2,5] input
+    where
+        input = ["aldo","beat","carla","david","evi","flip","gary","hugo","ida"]
+
 testProblem28 = TestCase $ do
     assertEqual "map length input" (map length lsorted) $ map length $ lsort input
     assertEqual "frequencies . lfsort input" (frequencies lfsorted) $ frequencies . lfsort $ input
@@ -173,6 +179,7 @@ testCases = TestList
     , TestLabel "Problem #24 (diff_select)" testProblem24
     , TestLabel "Problem #25 (rnd_permu)" testProblem25
     , TestLabel "Problem #26 (combinations)" testProblem26
+    , TestLabel "Problem #27 (group)" testProblem27
     , TestLabel "Problem #28 (lsort, lfsort)" testProblem28
     ]
 

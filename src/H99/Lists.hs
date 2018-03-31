@@ -1,7 +1,7 @@
 module H99.Lists where
 -- This modules contains problems #1 to #28 on lists
 
-import Data.List (groupBy, nub, sortOn, subsequences)
+import Data.List (groupBy, nub, sortOn, subsequences, (\\))
 import System.Random (getStdGen, randomRs)
 
 -- Problem #1:
@@ -242,6 +242,16 @@ rnd_permu xs = rnd_select xs l
 
 combinations :: Int -> [a] -> [[a]]
 combinations n = filter ((==n).length) . subsequences
+
+-- Problem #27
+-- Group the elements of a set into N disjoint subsets of given sizes.
+
+group :: (Eq a) => [Int] -> [a] -> [[[a]]]
+group [] _ = [[]]
+group (n:ns) xs = [ sizeN:otherSizes | (sizeN, rest) <- extractCombination n xs
+                                     , otherSizes    <- group ns rest ]
+    where
+        extractCombination n xs = map (\x -> (x, xs \\ x)) $ combinations n xs
 
 -- Problem #28
 -- Sorting a list of lists according to length of sublists.
