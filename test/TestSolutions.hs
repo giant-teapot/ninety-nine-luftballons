@@ -194,6 +194,9 @@ testProblem39 = TestCase $ do
     assertEqual "primesR 10 20" [11,13,17,19] $ primesR 10 20
     assertEqual "primesR 1 7" [2,3,5,7] $ primesR 1 7
 
+testProblem40 = TestCase $ do
+    assertEqual "goldbach 28" (5,23) $ goldbach 28
+
 -- Global test list
 
 testCases = TestList
@@ -236,6 +239,7 @@ testCases = TestList
     , TestLabel "Problem #36 (primeFactorsMult)" testProblem36
     , TestLabel "Problem #37 (totient')" testProblem37
     , TestLabel "Problem #39 (primesR)" testProblem39
+    , TestLabel "Problem #40 (goldbach)" testProblem40
     ]
 
 main :: IO ()

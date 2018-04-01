@@ -82,3 +82,20 @@ primesR a b
     -- only consider odd numbers
     | even a    = filter isPrime [a+1,a+3..b]
     | otherwise = filter isPrime [a,a+2..b]
+
+-- Problem #40
+-- Goldbach's conjecture.
+-- Find the two prime numbers that sum up to a given even integer greater than 2.
+
+goldbach :: (Integral a) => a -> (a,a)
+goldbach n
+    | odd n || n < 4 = error "Goldbach's only applies to even numbers greater than 2"
+    | otherwise = findSum primeCandidates n
+        where
+            primeCandidates = primesR 3 n
+            findSum [] _ = error "Either you have a counter-example to Goldbach's \
+                                 \conjecture or there is an error in this function. \
+                                 \Probably the latter."
+            findSum (x:xs) n
+                | elem (n-x) xs = (x, n-x)
+                | otherwise = findSum xs n
