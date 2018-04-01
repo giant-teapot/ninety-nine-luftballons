@@ -14,7 +14,8 @@ extra-source-files:  README.md
 
 library
   exposed-modules:     H99.Lists,
-                       H99.Arithmetic
+                       H99.Arithmetic,
+                       H99.Codes
   other-modules:
   hs-source-dirs:      src
   default-language:    Haskell2010

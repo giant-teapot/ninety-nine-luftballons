@@ -7,6 +7,7 @@ import Test.Framework.Providers.HUnit (hUnitTestToTests)
 import Data.List (nub, subsequences)
 import H99.Lists
 import H99.Arithmetic
+import H99.Codes
 
 -- H99.Lists
 
@@ -203,6 +204,7 @@ testProblem41 = TestCase $ do
     assertEqual "goldbachList 9 20" [(3,7),(5,7),(3,11),(3,13),(5,13),(3,17)] $ goldbachList 9 20
     assertEqual "goldbachList' 4 1500 50" [(73,919),(61,1321)] $ goldbachList' 4 1500 50
 
+-- H99.Codes
 
 -- Global test list
 
