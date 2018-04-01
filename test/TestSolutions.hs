@@ -193,9 +193,11 @@ testProblem37 = TestCase $ do
 testProblem39 = TestCase $ do
     assertEqual "primesR 10 20" [11,13,17,19] $ primesR 10 20
     assertEqual "primesR 1 7" [2,3,5,7] $ primesR 1 7
+    assertEqual "primesR 2 7" [2,3,5,7] $ primesR 2 7
 
 testProblem40 = TestCase $ do
     assertEqual "goldbach 28" (5,23) $ goldbach 28
+    assertEqual "goldbach 4" (2,2) $ goldbach 4
 
 -- Global test list
 

@@ -78,7 +78,7 @@ totient' n = foldl (*) 1 $ map (\(p, m) -> (p-1) * p^(m-1)) $ primeFactorsMult n
 
 primesR :: (Integral a) => a -> a -> [a]
 primesR a b
-    | a < 2     = filter isPrime [a..2] ++ primesR 3 b
+    | a <= 2    = filter isPrime [a..2] ++ primesR 3 b
     -- only consider odd numbers
     | even a    = filter isPrime [a+1,a+3..b]
     | otherwise = filter isPrime [a,a+2..b]
@@ -92,10 +92,10 @@ goldbach n
     | odd n || n < 4 = error "Goldbach's only applies to even numbers greater than 2"
     | otherwise = findSum primeCandidates n
         where
-            primeCandidates = primesR 3 n
+            primeCandidates = primesR 2 n
             findSum [] _ = error "Either you have a counter-example to Goldbach's \
                                  \conjecture or there is an error in this function. \
                                  \Probably the latter."
             findSum (x:xs) n
-                | elem (n-x) xs = (x, n-x)
+                | elem (n-x) (x:xs) = (x, n-x)
                 | otherwise = findSum xs n
