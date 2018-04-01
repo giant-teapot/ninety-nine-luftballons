@@ -199,6 +199,11 @@ testProblem40 = TestCase $ do
     assertEqual "goldbach 28" (5,23) $ goldbach 28
     assertEqual "goldbach 4" (2,2) $ goldbach 4
 
+testProblem41 = TestCase $ do
+    assertEqual "goldbachList 9 20" [(3,7),(5,7),(3,11),(3,13),(5,13),(3,17)] $ goldbachList 9 20
+    assertEqual "goldbachList' 4 1500 50" [(73,919),(61,1321)] $ goldbachList' 4 1500 50
+
+
 -- Global test list
 
 testCases = TestList
@@ -242,6 +247,7 @@ testCases = TestList
     , TestLabel "Problem #37 (totient')" testProblem37
     , TestLabel "Problem #39 (primesR)" testProblem39
     , TestLabel "Problem #40 (goldbach)" testProblem40
+    , TestLabel "Problem #41 (goldbachList and goldbachList')" testProblem41
     ]
 
 main :: IO ()

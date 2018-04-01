@@ -99,3 +99,15 @@ goldbach n
             findSum (x:xs) n
                 | elem (n-x) (x:xs) = (x, n-x)
                 | otherwise = findSum xs n
+
+-- Problem #41
+-- Given a range of integers by its lower and upper limit, print a list of all
+-- even numbers and their Goldbach composition.
+
+goldbachList :: (Integral a) => a -> a -> [(a,a)]
+goldbachList a b = map goldbach $ filter even [a..b]
+
+-- Find out Goldbach pairs in which both primes are bigger than a given number.
+
+goldbachList' :: (Integral a) => a -> a -> a -> [(a,a)]
+goldbachList' a b n = filter ((>n) . fst) $ goldbachList a b
