@@ -70,3 +70,15 @@ primeFactorsMult n = map swap $ encode . primeFactors $ n
 totient' :: (Integral a) => a -> a
 totient' 0 = 0
 totient' n = foldl (*) 1 $ map (\(p, m) -> (p-1) * p^(m-1)) $ primeFactorsMult n
+
+-- Problem #39
+--  A list of prime numbers.
+-- Given a range of integers by its lower and upper limit, construct a list of
+-- all prime numbers in that range.
+
+primesR :: (Integral a) => a -> a -> [a]
+primesR a b
+    | a < 2     = filter isPrime [a..2] ++ primesR 3 b
+    -- only consider odd numbers
+    | even a    = filter isPrime [a+1,a+3..b]
+    | otherwise = filter isPrime [a,a+2..b]

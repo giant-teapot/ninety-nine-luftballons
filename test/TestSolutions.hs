@@ -190,6 +190,10 @@ testProblem37 = TestCase $ do
     assertEqual "totient' <$> [40..42]" [16, 40, 12] $ totient' <$> [40..42]
     assertEqual "totient' <$> [0..100]" (totient <$> [0..100]) $ (totient' <$> [0..100])
 
+testProblem39 = TestCase $ do
+    assertEqual "primesR 10 20" [11,13,17,19] $ primesR 10 20
+    assertEqual "primesR 1 7" [2,3,5,7] $ primesR 1 7
+
 -- Global test list
 
 testCases = TestList
@@ -231,6 +235,7 @@ testCases = TestList
     , TestLabel "Problem #35 (primeFactors)" testProblem35
     , TestLabel "Problem #36 (primeFactorsMult)" testProblem36
     , TestLabel "Problem #37 (totient')" testProblem37
+    , TestLabel "Problem #39 (primesR)" testProblem39
     ]
 
 main :: IO ()
