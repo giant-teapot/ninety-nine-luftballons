@@ -206,6 +206,17 @@ testProblem41 = TestCase $ do
 
 -- H99.Codes
 
+testporblem46 = TestCase $ do
+    assertEqual "allValues and'" [True,False,False,False] $ allValues and'
+    assertEqual "allValues or'" [True,True,True,False] $ allValues or'
+    assertEqual "allValues nand'" [False,True,True,True] $ allValues nand'
+    assertEqual "allValues nor'" [False,False,False,True] $ allValues nor'
+    assertEqual "allValues xor'" [False,True,True,False] $ allValues xor'
+    assertEqual "allValues impl'" [True,False,True,True] $ allValues impl'
+    assertEqual "allValues equ'" [True,False,False,True] $ allValues equ'
+    where
+        allValues f = f <$> [True, False] <*> [True, False]
+
 -- Global test list
 
 testCases = TestList
@@ -250,6 +261,7 @@ testCases = TestList
     , TestLabel "Problem #39 (primesR)" testProblem39
     , TestLabel "Problem #40 (goldbach)" testProblem40
     , TestLabel "Problem #41 (goldbachList and goldbachList')" testProblem41
+    , TestLabel "Problem #46 (and', or', nand', nor', xor', impl', equ')" testporblem46
     ]
 
 main :: IO ()
