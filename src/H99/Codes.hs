@@ -1,5 +1,7 @@
 module H99.Codes where
 
+import Control.Monad (replicateM)
+
 -- Problem #46
 -- Define predicates and/2, or/2, nand/2, nor/2, xor/2, impl/2 and equ/2
 -- (for logical equivalence).
@@ -31,3 +33,11 @@ table :: (Bool -> Bool -> Bool) -> String
 table f = concatMap (++"\n") $ display <$> [True, False] <*> [True, False]
     where
         display a b = show a ++ " " ++ show b ++ " " ++ show (f a b)
+
+-- Problem #48
+-- Truth tables for logical expressions of N variables
+
+tableN :: Int -> ([Bool] -> Bool) -> String
+tableN n f = concatMap (++"\n") $ display <$>replicateM n [True, False]
+    where
+        display xs = concatMap ((++" ") . show) xs ++ show (f xs)
