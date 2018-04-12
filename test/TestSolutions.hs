@@ -217,6 +217,11 @@ testporblem46 = TestCase $ do
     where
         allValues f = f <$> [True, False] <*> [True, False]
 
+testProblem49 = TestCase $ do
+    assertEqual "grayCode 7" ["000","001","011","010","110","111","101","100"] $ grayCode (7::Int)
+    assertEqual "gray 3" ["000","001","011","010","110","111","101","100"] $ gray 3
+    assertEqual "map (length . head . gray) [1..10]" [1..10] $ map (length . head . gray) [1..10]
+
 -- Global test list
 
 testCases = TestList
@@ -262,6 +267,7 @@ testCases = TestList
     , TestLabel "Problem #40 (goldbach)" testProblem40
     , TestLabel "Problem #41 (goldbachList and goldbachList')" testProblem41
     , TestLabel "Problem #46 (and', or', nand', nor', xor', impl', equ')" testporblem46
+    , TestLabel "Problem #49 (grayCode, gray)" testProblem49
     ]
 
 main :: IO ()

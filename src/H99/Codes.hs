@@ -1,6 +1,9 @@
 module H99.Codes where
 
 import Control.Monad (replicateM)
+import Data.Bits (Bits, shiftR, xor)
+import Data.Char (intToDigit)
+import Numeric (showIntAtBase)
 
 -- Problem #46
 -- Define predicates and/2, or/2, nand/2, nor/2, xor/2, impl/2 and equ/2
@@ -41,3 +44,20 @@ tableN :: Int -> ([Bool] -> Bool) -> String
 tableN n f = concatMap (++"\n") $ display <$>replicateM n [True, False]
     where
         display xs = concatMap ((++" ") . show) xs ++ show (f xs)
+
+-- Problem #49
+-- Give the sequence of n-bit Gray code, as a sequence of n-characters strings.
+
+-- toGray(n) = n xor (floor(n/2))
+toGray :: (Show a, Integral a, Bits a) => a -> a
+toGray n = xor n $ shiftR n 1
+
+grayCode :: (Show a, Integral a, Bits a) => a -> [String]
+grayCode n = map (addLeadingZeros . toBinaryString . toGray) [0..n]
+    where
+        toBinaryString n = showIntAtBase 2 intToDigit n ""
+        addLeadingZeros xs = replicate (digitsToShow - length xs) '0' ++ xs
+        digitsToShow = if n < 2 then 1 else (ceiling $ logBase 2 $ fromIntegral n)
+
+gray :: (Integral a) => a -> [String]
+gray n = grayCode $ toInteger $ 2^n - 1
